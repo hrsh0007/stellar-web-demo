@@ -5,7 +5,7 @@ const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-  return <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+  return <header className="fixed top-0 left-0 w-full shadow-sm z-50 bg-slate-50">
       <div className="container mx-auto flex justify-between items-center py-4 bg-slate-50">
         {/* Logo */}
         <a href="#" className="flex items-center">
