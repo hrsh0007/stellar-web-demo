@@ -1,6 +1,6 @@
+
 import React, { useState } from 'react';
 import ScrollReveal from '../ui/ScrollReveal';
-import { Button } from '@/components/ui/button';
 
 // Rename the interface to avoid naming conflict with the component
 interface TabContentData {
@@ -11,7 +11,6 @@ interface TabContentData {
 
 const TabbedContent = () => {
   const [activeTab, setActiveTab] = useState<string>('accommodations');
-  const [hoveredTab, setHoveredTab] = useState<string | null>(null);
 
   const tabs = [
     {
@@ -53,25 +52,23 @@ const TabbedContent = () => {
   ];
 
   return (
-    <section className="section bg-background text-foreground transition-colors duration-300">
+    <section className="section bg-white">
       <div className="container mx-auto">
         <ScrollReveal>
-          <h2 className="section-title text-foreground">Explore Our Offerings</h2>
+          <h2 className="section-title">Explore Our Offerings</h2>
         </ScrollReveal>
         
         <ScrollReveal delay={200}>
-          <div className="flex flex-wrap justify-center border-b border-border mb-8">
+          <div className="flex flex-wrap justify-center border-b mb-8">
             {tabs.map((tab, index) => (
               <ScrollReveal key={tab.id} delay={index * 100}>
                 <button
-                  className={`px-6 py-3 font-medium transition-all duration-300 transform hover:scale-105 ${
+                  className={`px-6 py-3 font-medium transition-colors ${
                     activeTab === tab.id
                       ? 'text-gold border-b-2 border-gold'
-                      : 'text-muted-foreground hover:text-primary'
+                      : 'text-gray-500 hover:text-navy'
                   }`}
                   onClick={() => setActiveTab(tab.id)}
-                  onMouseEnter={() => setHoveredTab(tab.id)}
-                  onMouseLeave={() => setHoveredTab(null)}
                 >
                   {tab.label}
                 </button>
@@ -85,7 +82,6 @@ const TabbedContent = () => {
             key={tab.id}
             isActive={activeTab === tab.id}
             content={tab.content}
-            isHovered={hoveredTab === tab.id}
           />
         ))}
       </div>
@@ -93,31 +89,21 @@ const TabbedContent = () => {
   );
 };
 
-const TabContent: React.FC<{ 
-  isActive: boolean; 
-  content: TabContentData;
-  isHovered: boolean;
-}> = ({ isActive, content, isHovered }) => {
+// Update the component to use the renamed interface
+const TabContent: React.FC<{ isActive: boolean; content: TabContentData }> = ({ isActive, content }) => {
   if (!isActive) return null;
   
   return (
     <div className="grid md:grid-cols-2 gap-8 items-center animate-fade-in">
       <ScrollReveal delay={200}>
-        <div className="transition-all duration-300">
-          <h3 className="text-2xl font-serif font-semibold mb-4 text-foreground">{content.title}</h3>
-          <p className="text-muted-foreground mb-6">{content.description}</p>
-          <Button 
-            className="hover:scale-105 transition-transform"
-            variant="default"
-          >
-            Learn More
-          </Button>
+        <div>
+          <h3 className="text-2xl font-serif font-semibold mb-4">{content.title}</h3>
+          <p className="text-gray-600 mb-6">{content.description}</p>
+          <button className="btn-primary hover:scale-105 transition-transform">Learn More</button>
         </div>
       </ScrollReveal>
       <ScrollReveal delay={400}>
-        <div className={`rounded-lg overflow-hidden shadow-lg transform transition-all duration-300 ${
-          isHovered ? 'scale-[1.02]' : ''
-        }`}>
+        <div className="rounded-lg overflow-hidden shadow-lg transform transition-transform hover:scale-[1.02] duration-300">
           <img src={content.image} alt={content.title} className="w-full h-full object-cover" />
         </div>
       </ScrollReveal>
