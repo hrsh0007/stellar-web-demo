@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Header from '@/components/layout/Header';
 import { DarkModeToggle } from '@/components/ui/DarkModeToggle';
@@ -8,6 +9,7 @@ import PopupSection from '@/components/sections/PopupSection';
 import AccordionSection from '@/components/sections/AccordionSection';
 import CustomSlider from '@/components/sections/CustomSlider';
 import TabbedContent from '@/components/sections/TabbedContent';
+import Footer from '@/components/layout/Footer';
 
 const Index = () => {
   useEffect(() => {
