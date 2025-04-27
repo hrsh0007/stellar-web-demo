@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import ScrollReveal from '../ui/ScrollReveal';
 
@@ -55,20 +54,21 @@ const TabbedContent = () => {
           <h2 className="section-title">Explore Our Offerings</h2>
         </ScrollReveal>
         
-        <ScrollReveal>
+        <ScrollReveal delay={200}>
           <div className="flex flex-wrap justify-center border-b mb-8">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                className={`px-6 py-3 font-medium transition-colors ${
-                  activeTab === tab.id
-                    ? 'text-gold border-b-2 border-gold'
-                    : 'text-gray-500 hover:text-navy'
-                }`}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                {tab.label}
-              </button>
+            {tabs.map((tab, index) => (
+              <ScrollReveal key={tab.id} delay={index * 100}>
+                <button
+                  className={`px-6 py-3 font-medium transition-colors ${
+                    activeTab === tab.id
+                      ? 'text-gold border-b-2 border-gold'
+                      : 'text-gray-500 hover:text-navy'
+                  }`}
+                  onClick={() => setActiveTab(tab.id)}
+                >
+                  {tab.label}
+                </button>
+              </ScrollReveal>
             ))}
           </div>
         </ScrollReveal>
@@ -85,25 +85,23 @@ const TabbedContent = () => {
   );
 };
 
-interface TabContent {
-  title: string;
-  description: string;
-  image: string;
-}
-
 const TabContent: React.FC<{ isActive: boolean; content: TabContent }> = ({ isActive, content }) => {
   if (!isActive) return null;
   
   return (
     <div className="grid md:grid-cols-2 gap-8 items-center animate-fade-in">
-      <div>
-        <h3 className="text-2xl font-serif font-semibold mb-4">{content.title}</h3>
-        <p className="text-gray-600 mb-6">{content.description}</p>
-        <button className="btn-primary">Learn More</button>
-      </div>
-      <div className="rounded-lg overflow-hidden shadow-lg">
-        <img src={content.image} alt={content.title} className="w-full h-full object-cover" />
-      </div>
+      <ScrollReveal delay={200}>
+        <div>
+          <h3 className="text-2xl font-serif font-semibold mb-4">{content.title}</h3>
+          <p className="text-gray-600 mb-6">{content.description}</p>
+          <button className="btn-primary hover:scale-105 transition-transform">Learn More</button>
+        </div>
+      </ScrollReveal>
+      <ScrollReveal delay={400}>
+        <div className="rounded-lg overflow-hidden shadow-lg transform transition-transform hover:scale-[1.02] duration-300">
+          <img src={content.image} alt={content.title} className="w-full h-full object-cover" />
+        </div>
+      </ScrollReveal>
     </div>
   );
 };

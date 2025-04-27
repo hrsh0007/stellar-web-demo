@@ -36,13 +36,14 @@ const ThreeColumnFeatures = () => {
             <ScrollReveal 
               key={feature.id}
               delay={index * 200}
-              className="bg-white rounded-lg overflow-hidden shadow-md transition-transform hover:translate-y-[-5px]"
+              threshold={0.2}
+              className="bg-white rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
             >
               <div className="h-48 overflow-hidden">
                 <img 
                   src={feature.icon} 
                   alt={feature.title} 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" 
                 />
               </div>
               <div className="p-6">
