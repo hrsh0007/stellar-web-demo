@@ -42,7 +42,7 @@ const TabbedContent = () => {
       label: 'Activities',
       content: {
         title: 'Exciting Activities & Excursions',
-        description: 'Discover a world of adventure and exploration with our curated selection of activities and excursions. From water sports and guided nature walks to cultural tours and exclusive experiences, there's something for every interest and age group.',
+        description: "Discover a world of adventure and exploration with our curated selection of activities and excursions. From water sports and guided nature walks to cultural tours and exclusive experiences, there's something for every interest and age group.",
         image: 'https://images.unsplash.com/photo-1544376798-89aa6b82c6cd?q=80&w=1000&auto=format&fit=crop',
       },
     },
