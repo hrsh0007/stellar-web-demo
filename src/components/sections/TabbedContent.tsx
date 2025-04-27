@@ -1,8 +1,12 @@
+
 import React, { useState } from 'react';
 import ScrollReveal from '../ui/ScrollReveal';
 
-interface TabContentProps {
-  isActive: boolean;
+// Rename the interface to avoid naming conflict with the component
+interface TabContentData {
+  title: string;
+  description: string;
+  image: string;
 }
 
 const TabbedContent = () => {
@@ -85,7 +89,8 @@ const TabbedContent = () => {
   );
 };
 
-const TabContent: React.FC<{ isActive: boolean; content: TabContent }> = ({ isActive, content }) => {
+// Update the component to use the renamed interface
+const TabContent: React.FC<{ isActive: boolean; content: TabContentData }> = ({ isActive, content }) => {
   if (!isActive) return null;
   
   return (
